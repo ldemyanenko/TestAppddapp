@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         filterFialog =new FilterDialog(MainActivity.this);
-        filterFialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
     }
 
     private void initiateDataBase() {
