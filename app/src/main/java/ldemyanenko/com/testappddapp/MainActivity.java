@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             //RealmResults are lazy loaded, so subList will query only the needed items
             students.addAll(realm.where(Student.class).findAll().subList((page) * 20 + 1, (page + 1) * 20));
         }else{
-            students.addAll(realm.where(Student.class).equalTo("courses.index",filterCourse+"__"+filterMark).findAll().subList((page) * 20 + 1, (page + 1) * 20));
+            students.addAll(realm.where(Student.class).equalTo("courses.index",Course.createIndex(filterCourse,filterMark)).findAll().subList((page) * 20 + 1, (page + 1) * 20));
 
         }
     }
