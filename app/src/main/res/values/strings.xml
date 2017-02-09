@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">"Test App ddapp "</string>
+    <string name="courses_dialog_title">Courses</string>
+    <string name="filter_clear_button_text">Clear</string>
+    <string name="filter_OK_button_text">OK</string>
+    <string name="filter_mark_empty_error">You need to enter a mark</string>
+    <string name="filters_dialog_title">Filters</string>
+</resources>

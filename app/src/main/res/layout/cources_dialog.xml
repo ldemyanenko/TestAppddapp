@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="240dp"
+    android:layout_height="320dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/courses_dialog_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <ListView
+        android:id="@+id/course_list"
+        android:divider="@color/colorWhite"
+        android:dividerHeight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+    </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Average mark: "/>
+        <TextView
+            android:id="@+id/average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+<Button
+    android:id="@+id/btn_ok"
+    style="@style/button_style"
+    android:layout_gravity="right"
+    android:layout_width="wrap_content"
+    android:text="OK"/>
+</LinearLayout>
