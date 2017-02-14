@@ -56,9 +56,9 @@ public class CoursesDialog extends Dialog implements
         dismiss();
     }
 
-    public void setStudent(Student student) {
-        courses.clear();
-        courses.addAll(student.getCourses());
+    public void setCourses(List<Course> courses) {
+        this.courses.clear();
+        this.courses.addAll(courses);
         if(adapter!=null){
             adapter.notifyDataSetChanged();
             setAverage();

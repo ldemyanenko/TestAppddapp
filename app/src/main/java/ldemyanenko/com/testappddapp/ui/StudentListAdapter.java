@@ -10,16 +10,20 @@ import android.widget.TextView;
 import java.util.List;
 
 import ldemyanenko.com.testappddapp.R;
+import ldemyanenko.com.testappddapp.db.DBInterface;
+import ldemyanenko.com.testappddapp.dto.Course;
 import ldemyanenko.com.testappddapp.dto.Student;
 
 
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.ViewHolder> {
     private final List<Student> students;
+    private final DBInterface dbI;
     CoursesDialog dialog;
 
-    public StudentListAdapter(List<Student> students, Activity activity) {
+    public StudentListAdapter(List<Student> students, Activity activity,DBInterface dbI) {
         this.students=students;
         dialog =new CoursesDialog(activity);
+        this.dbI=dbI;
     }
 
     @Override
@@ -38,7 +42,9 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.setStudent(student);
+
+                List<Course> coursesByStudent = dbI.getCoursesByStudent(student);
+                dialog.setCourses(coursesByStudent);
                 dialog.show();
             }
         });
