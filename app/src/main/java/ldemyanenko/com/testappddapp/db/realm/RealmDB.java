@@ -1,4 +1,4 @@
-package ldemyanenko.com.testappddapp.db;
+package ldemyanenko.com.testappddapp.db.realm;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
+import ldemyanenko.com.testappddapp.db.DBInterface;
 import ldemyanenko.com.testappddapp.dto.Course;
 import ldemyanenko.com.testappddapp.dto.Student;
 
@@ -69,6 +70,11 @@ public class RealmDB implements DBInterface {
     @Override
     public List<Course> getCoursesByStudent(Student student) {
         return student.getCourses();
+    }
+
+    @Override
+    public void close() {
+        realm.close();
     }
 
     //realm doesn't have joins or sub-queries, so ist's a way for making complex fields conditions

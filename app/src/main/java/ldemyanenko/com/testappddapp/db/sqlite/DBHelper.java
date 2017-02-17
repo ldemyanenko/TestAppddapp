@@ -1,4 +1,4 @@
-package ldemyanenko.com.testappddapp.db;
+package ldemyanenko.com.testappddapp.db.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;

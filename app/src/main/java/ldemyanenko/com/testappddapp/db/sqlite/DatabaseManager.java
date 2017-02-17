@@ -1,4 +1,4 @@
-package ldemyanenko.com.testappddapp.db;
+package ldemyanenko.com.testappddapp.db.sqlite;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;

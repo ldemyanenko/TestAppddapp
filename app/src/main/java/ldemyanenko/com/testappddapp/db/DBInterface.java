@@ -21,6 +21,8 @@ public interface DBInterface {
 
     List<Course> getCoursesByStudent(Student student);
 
+    void close();
+
     interface Catchable{
       void whenCatch();
   }

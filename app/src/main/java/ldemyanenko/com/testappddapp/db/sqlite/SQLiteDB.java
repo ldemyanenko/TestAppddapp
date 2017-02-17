@@ -1,4 +1,4 @@
-package ldemyanenko.com.testappddapp.db;
+package ldemyanenko.com.testappddapp.db.sqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.Collection;
 import java.util.List;
 
+import ldemyanenko.com.testappddapp.db.DBInterface;
 import ldemyanenko.com.testappddapp.dto.Course;
 import ldemyanenko.com.testappddapp.dto.Student;
 
@@ -56,5 +57,10 @@ public class SQLiteDB implements DBInterface {
     @Override
     public List<Course> getCoursesByStudent(Student student) {
         return dbHelper.getCoursesByStudent(student);
+    }
+
+    @Override
+    public void close() {
+        DatabaseManager.getInstance().closeDatabase();
     }
 }

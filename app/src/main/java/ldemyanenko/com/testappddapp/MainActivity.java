@@ -15,8 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import ldemyanenko.com.testappddapp.db.DBInterface;
-import ldemyanenko.com.testappddapp.db.RealmDB;
-import ldemyanenko.com.testappddapp.db.SQLiteDB;
+import ldemyanenko.com.testappddapp.db.ormlite.OrmLiteDB;
+import ldemyanenko.com.testappddapp.db.realm.RealmDB;
+import ldemyanenko.com.testappddapp.db.sqlite.SQLiteDB;
 import ldemyanenko.com.testappddapp.dto.Student;
 import ldemyanenko.com.testappddapp.ui.EndlessRecyclerViewScrollListener;
 import ldemyanenko.com.testappddapp.ui.FilterDialog;
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //dbI = new RealmDB(this);
-        dbI = new SQLiteDB(this);
+        //dbI = new SQLiteDB(this);
+        dbI = new OrmLiteDB(this);
         initiateViews();
         requestAndDisplayStudentList();
         filterIcon = findViewById(R.id.filter_icon);
@@ -53,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 filterFialog.show();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbI.close();
     }
 
     private void requestAndDisplayStudentList() {
