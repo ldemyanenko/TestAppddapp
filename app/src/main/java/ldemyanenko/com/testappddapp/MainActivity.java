@@ -73,7 +73,28 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onResponse(final Student[] response) {
                         Log.e(MainActivity.this.getClass().getSimpleName(), response.toString());
-                        new DBTransactionTask().execute(response);
+                        //make db transaction out of ui tread
+                        new AsyncTask<Student, Integer, Long> (){
+
+                            @Override
+                            protected Long doInBackground(Student... students) {
+                                dbI.putStudentArray(students);
+                                return 1l;
+                            }
+
+                        protected void onPostExecute(Long result) {
+                            students.addAll(dbI.getStudentList(0));
+                            adapter = new StudentListAdapter(students,MainActivity.this, dbI);
+                            listView.setAdapter(adapter);
+                            filterIcon.setVisibility(View.VISIBLE);
+                            List<String> spinnerArray = dbI.getAllDistinctCourses();
+                            filterFialog.prepare(spinnerArray);
+                            Log.e(MainActivity.this.getClass().getSimpleName(), students.toString());
+                            hideProgressDialog();
+                        }
+
+
+                        }.execute(response);
 
                     }
                 }, new Response.ErrorListener() {
@@ -137,28 +158,6 @@ public class MainActivity extends BaseActivity {
 
     public void clearFilter() {
         setFilter(null,filterMark);
-    }
-
-    private class DBTransactionTask extends AsyncTask<Student, Integer, Long> {
-
-        @Override
-        protected Long doInBackground(Student... students) {
-            dbI.putStudentArray(students);
-           return 1l;
-        }
-
-        protected void onPostExecute(Long result) {
-            students.addAll(dbI.getStudentList(0));
-            adapter = new StudentListAdapter(students,MainActivity.this, dbI);
-            listView.setAdapter(adapter);
-            filterIcon.setVisibility(View.VISIBLE);
-            List<String> spinnerArray = dbI.getAllDistinctCourses();
-            filterFialog.prepare(spinnerArray);
-            Log.e(MainActivity.this.getClass().getSimpleName(), students.toString());
-            hideProgressDialog();
-        }
-
-
     }
 
 }
