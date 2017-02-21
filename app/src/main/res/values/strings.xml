@@ -5,4 +5,8 @@
     <string name="filter_OK_button_text">OK</string>
     <string name="filter_mark_empty_error">You need to enter a mark</string>
     <string name="filters_dialog_title">Filters</string>
+    <string name="hint_email">email</string>
+    <string name="hint_password">password</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
 </resources>

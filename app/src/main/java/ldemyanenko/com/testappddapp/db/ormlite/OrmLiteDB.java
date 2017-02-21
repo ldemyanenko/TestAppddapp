@@ -27,7 +27,7 @@ public class OrmLiteDB implements DBInterface {
         HelperFactory.setHelper(context);
     }
     @Override
-    public void putStudentArray(Student[] students, Catchable load) {
+    public void putStudentArray(Student[] students) {
         final SQLiteDatabase db = HelperFactory.getHelper().getWritableDatabase();
         db.beginTransaction();
         try {
@@ -41,8 +41,6 @@ public class OrmLiteDB implements DBInterface {
                 }
             }
             db.setTransactionSuccessful();
-            load.whenCatch();
-
         } catch (SQLException e) {
             Log.e(TAG,e.getMessage());
         }

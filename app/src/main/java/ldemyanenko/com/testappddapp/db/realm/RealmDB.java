@@ -30,13 +30,12 @@ public class RealmDB implements DBInterface {
     }
 
     @Override
-    public void putStudentArray(final Student[] response,final Catchable load) {
+    public void putStudentArray(final Student[] response) {
         reIndex(response);
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 realm.copyToRealmOrUpdate(Arrays.asList(response));
-            load.whenCatch();
 
             }
         });

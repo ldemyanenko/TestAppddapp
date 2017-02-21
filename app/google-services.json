@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "152442892083",
+    "firebase_url": "https://mytestfirebase-61fe8.firebaseio.com",
+    "project_id": "mytestfirebase-61fe8",
+    "storage_bucket": "mytestfirebase-61fe8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152442892083:android:87fcb66cc6ca320a",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152442892083-leo54jtnrd3kfqjl02vb7p7658hsu6lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgfv6Vz5JixHRFMK_5G6W7CvaAQrsgBfM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152442892083:android:fcfef757a832647b",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152442892083-leo54jtnrd3kfqjl02vb7p7658hsu6lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgfv6Vz5JixHRFMK_5G6W7CvaAQrsgBfM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152442892083:android:801bba01b0ad21e6",
+        "android_client_info": {
+          "package_name": "ldemyanenko.com.testappddapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152442892083-leo54jtnrd3kfqjl02vb7p7658hsu6lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgfv6Vz5JixHRFMK_5G6W7CvaAQrsgBfM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

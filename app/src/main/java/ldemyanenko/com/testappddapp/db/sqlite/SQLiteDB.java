@@ -21,22 +21,12 @@ public class SQLiteDB implements DBInterface {
         DatabaseManager.initializeInstance(dbHelper);
     }
     @Override
-    public void putStudentArray(final Student[] students, final Catchable load) {
+    public void putStudentArray(final Student[] students) {
         SQLiteDatabase db = DatabaseManager.getInstance().openDatabase();
         db.beginTransaction();
         dbHelper.insertStudents(db,students);
         db.setTransactionSuccessful();
         db.endTransaction();
-        load.whenCatch();
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//
-//            }
-//        }).start();
-
-       // db.close();
     }
 
     @Override

@@ -7,21 +7,26 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ldemyanenko.com.testappddapp.MainActivity">
-<FrameLayout
-    android:id="@+id/filter"
+<RelativeLayout
+    android:id="@+id/actionbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/filter_icon"/>
     <ImageView
         android:id="@+id/filter_icon"
         android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
         android:src="@drawable/ic_filter"/>
-</FrameLayout>
+</RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@+id/filter"
+        android:layout_below="@+id/actionbar"
         android:id="@+id/main_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

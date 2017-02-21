@@ -1,5 +1,6 @@
 package ldemyanenko.com.testappddapp;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +25,7 @@ import ldemyanenko.com.testappddapp.ui.FilterDialog;
 import ldemyanenko.com.testappddapp.ui.StudentListAdapter;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     final static String url = "https://ddapp-sfa-api-dev.azurewebsites.net/api/test/students";
     private final HashMap<String, String> additionalHeaders = new HashMap<>();
     private DBInterface dbI;
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //dbI = new RealmDB(this);
-        //dbI = new SQLiteDB(this);
-        dbI = new OrmLiteDB(this);
+        dbI = new SQLiteDB(this);
+        //dbI = new OrmLiteDB(this);
         initiateViews();
         requestAndDisplayStudentList();
         filterIcon = findViewById(R.id.filter_icon);
@@ -72,20 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(final Student[] response) {
                         Log.e(MainActivity.this.getClass().getSimpleName(), response.toString());
-                        dbI.putStudentArray(response,new DBInterface.Catchable() {
-                            @Override
-                            public void whenCatch() {
-
-                                students.addAll(dbI.getStudentList(0));
-                                adapter = new StudentListAdapter(students,MainActivity.this, dbI);
-                                listView.setAdapter(adapter);
-                                filterIcon.setVisibility(View.VISIBLE);
-                                List<String> spinnerArray = dbI.getAllDistinctCourses();
-                                filterFialog.prepare(spinnerArray);
-                                Log.e(MainActivity.this.getClass().getSimpleName(), students.toString());
-                            }
-                        });
-
+                        new DBTransactionTask().execute(response);
 
                     }
                 }, new Response.ErrorListener() {
@@ -97,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }));
         requestQueue.start();
+        showProgressDialog();
     }
 
     private void initiateViews() {
@@ -149,4 +138,27 @@ public class MainActivity extends AppCompatActivity {
     public void clearFilter() {
         setFilter(null,filterMark);
     }
+
+    private class DBTransactionTask extends AsyncTask<Student, Integer, Long> {
+
+        @Override
+        protected Long doInBackground(Student... students) {
+            dbI.putStudentArray(students);
+           return 1l;
+        }
+
+        protected void onPostExecute(Long result) {
+            students.addAll(dbI.getStudentList(0));
+            adapter = new StudentListAdapter(students,MainActivity.this, dbI);
+            listView.setAdapter(adapter);
+            filterIcon.setVisibility(View.VISIBLE);
+            List<String> spinnerArray = dbI.getAllDistinctCourses();
+            filterFialog.prepare(spinnerArray);
+            Log.e(MainActivity.this.getClass().getSimpleName(), students.toString());
+            hideProgressDialog();
+        }
+
+
+    }
+
 }

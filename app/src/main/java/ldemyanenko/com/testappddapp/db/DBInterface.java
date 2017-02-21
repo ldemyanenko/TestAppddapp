@@ -12,7 +12,7 @@ import ldemyanenko.com.testappddapp.dto.Student;
 public interface DBInterface {
 
 
-    void putStudentArray(Student[] students,Catchable load);
+    void putStudentArray(Student[] students);
 
     List<String> getAllDistinctCourses();
 
@@ -23,8 +23,5 @@ public interface DBInterface {
 
     void close();
 
-    interface Catchable{
-      void whenCatch();
-  }
 }
 
