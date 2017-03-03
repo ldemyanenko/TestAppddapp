@@ -8,13 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseFragment extends Fragment {
 
     private ProgressDialog mProgressDialog;
 
-    public void showProgressDialog() {
+    protected void showProgressDialog() {
         if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog = new ProgressDialog(getContext());
             mProgressDialog.setCancelable(false);
             mProgressDialog.setMessage("Loading...");
         }
@@ -22,21 +22,14 @@ public class BaseActivity extends AppCompatActivity {
         mProgressDialog.show();
     }
 
-    public void hideProgressDialog() {
+    protected void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
     }
 
-    public String getUid() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
-    }
-
-    protected void showFragment(Fragment fragment){
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_placeholder, fragment);
-        ft.addToBackStack(null);
-        ft.commit();
+    protected void showFragment(RegistrationFragment fragment) {
+        ((BaseActivity)getActivity()).showFragment(fragment);
     }
 
 }

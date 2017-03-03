@@ -9,4 +9,6 @@
     <string name="hint_password">password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
+    <string name="first_name">First Name</string>
+    <string name="register">Register</string>
 </resources>
